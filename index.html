@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0c101d" />
+  <meta name="description" content="Маленька історія про нас. Для Насті." />
+  <title>Настю, тут дещо для тебе</title>
+  <link rel="icon" href="assets/heart.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="transition-layer" aria-hidden="true"></div>
+  <div id="stars-global" aria-hidden="true"></div>
+  <div id="pointer-glow" aria-hidden="true"></div>
+  <div class="film-grain" aria-hidden="true"></div>
+  <audio id="soundtrack" src="assets/ambient.mp3" loop preload="auto"></audio>
+
+  <header class="nav" id="nav">
+    <div class="brand"><span class="brand-star">✳</span><span>ТИ & Я <i>/ наша історія</i></span></div>
+    <div class="progress" aria-label="Прогрес історії"><div id="progress-bar"></div></div>
+    <div class="nav-end"><span id="chapter-name">ПЕРЕДМОВА</span><button class="sound-btn" id="sound-btn" type="button" aria-label="Ввімкнути або вимкнути музику">♫ <span id="sound-label">вимк.</span></button></div>
+  </header>
+
+  <main id="stage" aria-live="polite">
+    <section class="scene scene--intro is-active" data-scene="0">
+      <div class="intro-art"></div><div class="intro-gradient"></div><figure class="intro-portrait" aria-hidden="true"><img src="photos/01.webp" alt=""/><figcaption>Здається, це про нас.</figcaption></figure><div class="floating-orb orb-a"></div><div class="floating-orb orb-b"></div>
+      <div class="intro-content wrap">
+        <div class="eyebrow reveal">ОСОБИСТО. НЕ ДЛЯ ВСІХ.</div>
+        <div class="tiny-rule reveal"></div>
+        <h1 class="reveal">Настю,<br /><em>ось дещо про нас.</em></h1>
+        <p class="intro-sub reveal">Не відео з TikTok. Не чергова романтична листівка. Просто я знайшов один трохи дивний спосіб сказати тобі те, що не завжди виходить сказати вголос.</p>
+        <button class="action main-action reveal" data-next type="button">Відкрити історію <span>↗</span></button>
+        <div class="intro-bottom reveal"><span>Навушники — за бажанням</span><span>Музика ввімкнеться після натискання</span></div>
+      </div>
+      <div class="scroll-dec deco" aria-hidden="true">01 / 08</div>
+    </section>
+
+    <section class="scene scene--files" data-scene="1">
+      <div class="scene-bg scene-bg--warm"></div>
+      <div class="wrap chapter-container">
+        <div class="eyebrow">РОЗДІЛ 01 / БЕЗ ФІЛЬТРІВ</div>
+        <h2>Я хочу зберегти<br /><em>не ідеальні фото.</em></h2>
+        <p class="lead">А ті, на яких ми справжні. Обери будь-яку фотографію: за кожною — маленький шматочок цієї історії.</p>
+        <div class="photo-masonry" id="photo-masonry"></div>
+        <p class="soft-note" id="photos-opened">Відкрито 0 із 10 фото (для продовження достатньо 6)</p>
+        <button class="action" id="photos-next" data-next disabled>Далі, я ще не все сказав <span>→</span></button>
+      </div>
+    </section>
+
+    <section class="scene scene--everyday" data-scene="2">
+      <div class="scene-bg scene-bg--city"></div>
+      <div class="wrap chapter-container">
+        <div class="eyebrow">РОЗДІЛ 02 / ЗОВСІМ НЕ ВЕЛИКІ РЕЧІ</div>
+        <h2>Мені подобається<br /><em>те, що інші не бачать.</em></h2>
+        <p class="lead">Не якісь великі слова. А звичайні моменти, з яких і складається наша історія. Натисни на кожну картку.</p>
+        <div class="ordinary-grid" id="ordinary-grid"></div>
+        <p class="soft-note" id="ordinary-count">0 / 4 відкрито</p>
+        <button class="action" data-next id="ordinary-next" disabled>Поглянемо і на іншу сторону <span>→</span></button>
+      </div>
+    </section>
+
+    <section class="scene scene--honest" data-scene="3">
+      <div class="scene-bg scene-bg--rain"></div>
+      <div class="wrap chapter-container narrow">
+        <div class="eyebrow">РОЗДІЛ 03 / НЕ ТІЛЬКИ ХОРОШЕ</div>
+        <h2>Місцями я буваю<br /><em>тим ще кадром.</em></h2>
+        <p class="lead">Я не збираюся робити вигляд, що все завжди чудово. Є дещо, за що я хочу відповідати сам, а не прикрашати словами.</p>
+        <div class="honesty-stack" id="honesty-stack"></div>
+        <div class="honesty-outro" id="honesty-outro" hidden>Це не спроба красиво вибачитись на сайті. Це нагадування самому собі, що бути уважнішим треба не в тексті, а в житті.</div>
+        <button class="action" id="honesty-next" data-next disabled>Далі. Буде трішки веселіше <span>→</span></button>
+      </div>
+    </section>
+
+    <section class="scene scene--humor" data-scene="4">
+      <div class="scene-bg scene-bg--warm"></div>
+      <div class="wrap chapter-container">
+        <div class="eyebrow">РОЗДІЛ 04 / СЕРЙОЗНІ ДОКУМЕНТИ</div>
+        <h2>А тепер офіційно:<br /><em>ми ті ще приколісти.</em></h2>
+        <p class="lead">Невеликий тест. Наскільки добре ти знаєш цього підозрілого типа, який усе це зробив?</p>
+        <div class="quiz-card" id="quiz-card">
+          <div class="quiz-no" id="quiz-no">ПИТАННЯ 01 / 03</div>
+          <h3 id="quiz-question">Тут буде запитання</h3>
+          <div id="quiz-options" class="quiz-options"></div>
+          <div id="quiz-feedback" class="quiz-feedback" aria-live="polite"></div>
+        </div>
+        <button class="action" id="quiz-next" data-next disabled>Тепер — дещо особисте <span>→</span></button>
+      </div>
+    </section>
+
+    <section class="scene scene--scratch" data-scene="5">
+      <div class="scene-bg scene-bg--city"></div>
+      <div class="wrap chapter-container narrow center">
+        <div class="eyebrow">РОЗДІЛ 05 / МАЛЕНЬКИЙ СЕКРЕТ</div>
+        <h2>Тут щось сховано.<br /><em>І це не тест.</em></h2>
+        <p class="lead">Зітри верхній шар пальцем (або мишкою). Так, я реально зробив це заради тебе.</p>
+        <div class="scratch-shell" id="scratch-shell">
+          <div class="scratch-under"><span class="scratch-kicker">Під усім цим шумом</span><strong>Мені добре<br />просто з тобою.</strong><small>Так навіть краще, ніж будь-яка гучна обіцянка.</small></div>
+          <canvas id="scratch" aria-label="Зітри покриття, щоб прочитати прихований текст"></canvas>
+        </div>
+        <div class="soft-note" id="scratch-hint">Проведи пальцем по картці</div>
+        <button class="action" id="scratch-next" data-next disabled>Я хочу сказати ще дещо <span>→</span></button>
+      </div>
+    </section>
+
+    <section class="scene scene--letter" data-scene="6">
+      <div class="scene-bg scene-bg--dawn"></div>
+      <div class="wrap chapter-container narrow letter-wrap">
+        <div class="eyebrow">РОЗДІЛ 06 / БЕЗ ЖАРТІВ</div>
+        <h2>Тут уже<br /><em>тільки мої слова.</em></h2>
+        <p class="lead">Можеш читати не поспішаючи. Я нікуди не жену.</p>
+        <div class="letter-envelope" id="letter-envelope"><button class="seal" id="open-letter" type="button" aria-label="Відкрити лист"><span>М → Н</span><small>торкнись, щоб відкрити</small></button></div>
+        <article class="letter-paper" id="letter-paper" hidden><div class="paper-head">ДЛЯ НАСТІ · ОСОБИСТО</div><div id="letter-text" class="letter-text"></div><div class="signature">Твій Макс <span>♥</span></div></article>
+        <button class="action" id="letter-next" data-next disabled>Є ще одна остання штука <span>→</span></button>
+      </div>
+    </section>
+
+    <section class="scene scene--finale" data-scene="7">
+      <div class="finale-sky" id="finale-sky"><canvas id="finale-canvas"></canvas></div>
+      <div class="wrap finale-content">
+        <div class="eyebrow">ОСТАННІЙ РОЗДІЛ / ТІЛЬКИ ДЛЯ ТЕБЕ</div>
+        <h2>Настю,<br /><em>подивись у небо.</em></h2>
+        <p class="lead" id="finale-guide">Торкнись п’яти світлих зірок. Кожна з них зберігає одну мою думку.</p>
+        <div class="constellation" id="constellation" aria-label="Інтерактивне сузір'я з п'яти зірок">
+          <svg class="constellation-svg" viewBox="0 0 700 430" preserveAspectRatio="none" aria-hidden="true"><path id="constellation-line" d=""/></svg>
+          <button class="star-point sp1" data-star="0" aria-label="Зірка 1">✦</button>
+          <button class="star-point sp2" data-star="1" aria-label="Зірка 2">✦</button>
+          <button class="star-point sp3" data-star="2" aria-label="Зірка 3">✦</button>
+          <button class="star-point sp4" data-star="3" aria-label="Зірка 4">✦</button>
+          <button class="star-point sp5" data-star="4" aria-label="Зірка 5">✦</button>
+          <div class="star-message" id="star-message">Тут з’явиться перше повідомлення</div>
+        </div>
+        <div class="final-reveal" id="final-reveal" hidden>
+          <div class="final-heart" aria-hidden="true">♥</div><figure class="final-feature"><img src="photos/10.webp" alt="Дві тіні складають сердечко руками на стіні"/><figcaption>У цьому кадрі немає наших облич. Але це точно ми.</figcaption></figure>
+          <p class="final-caption">ДЛЯ НАСТІ · ВІД МАКСА</p>
+          <h3 id="last-line"></h3>
+          <div class="final-mini-photos" id="final-mini-photos"></div>
+          <p class="afterword">І ні, це не кінець. Це лише десять кадрів із тих, які я хочу зберегти.</p>
+          <button class="action secondary" id="restart">Прожити ще раз ↺</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="chapter-footer" id="chapter-footer"><button id="back-btn" type="button" aria-label="Назад">← Назад</button><span id="foot-count">01 — 08</span><span class="footer-sign">Зроблено не заради лайків. Для тебе.</span></footer>
+
+  <dialog id="photo-dialog" class="photo-dialog"><button class="dialog-close" id="dialog-close" aria-label="Закрити фото">✕</button><div id="dialog-photo" class="dialog-photo"></div><div class="dialog-info"><div class="eyebrow" id="dialog-label"></div><h3 id="dialog-title"></h3><p id="dialog-text"></p><button id="dialog-next" type="button" class="text-button">Наступне фото →</button></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="content.js"></script><script src="app.js"></script>
+</body>
+</html>
